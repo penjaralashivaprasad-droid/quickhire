@@ -1,0 +1,127 @@
+{
+  "info": {
+    "name": "QuickHire API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \"username\":\"employer1\",\\n  \"email\":\"employer@example.com\",\\n  \"password\":\"pass12345\",\\n  \"role\":\"employer\"\\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/register/",
+          "host": [
+            "http://127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "register"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Token",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \"username\":\"employer1\",\\n  \"password\":\"pass12345\"\\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/token/",
+          "host": [
+            "http://127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "token"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Job (employer)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \"title\":\"Backend Developer\",\\n  \"description\":\"Work with Django\",\\n  \"salary\":\"50000\",\\n  \"location\":\"Remote\"\\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/jobs/",
+          "host": [
+            "http://127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "jobs"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List Jobs",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/jobs/",
+          "host": [
+            "http://127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "jobs"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Apply (applicant)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \"job\": 1,\\n  \"resume_link\": \"https://example.com/resume.pdf\"\\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/apply/",
+          "host": [
+            "http://127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "apply"
+          ]
+        }
+      }
+    }
+  ]
+}
